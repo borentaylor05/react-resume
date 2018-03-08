@@ -44,17 +44,3 @@ jobs:
         command: |
           npm build
           aws s3 sync /build s3://resume.taylorboren.me
-
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - install_aws_cli
-      - build
-      - deploy:
-          requires:
-            - install_aws_cli
-            - build
-          filters:
-            branches:
-              only: master
