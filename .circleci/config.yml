@@ -4,38 +4,23 @@
 #
 version: 2
 jobs:
-  install_aws_cli:
-    - run:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: node:carbon
+
+    working_directory: /
+
+    steps:
+      - checkout
+      - run:
         name: Install AWS CLI
-        working_directory: /
         command: |
           apt-get -y -qq update
           apt-get -y -qq install python3.4-dev
           curl -O https://bootstrap.pypa.io/get-pip.py
           python3.4 get-pip.py --user
           pip install awscli --upgrade --user
-
-  deploy:
-    - run:
-      name: Deploy
-      command: |
-        npm build
-        aws s3 sync /build s3://resume.taylorboren.me
-
-  build:
-    docker:
-      # specify the version you desire here
-      - image: node:carbon
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: /
-
-    steps:
-      - checkout
 
       # Download and cache dependencies
       - restore_cache:
@@ -53,6 +38,12 @@ jobs:
         
       # run tests!
       - run: npm test
+
+      - run:
+        name: Deploy
+        command: |
+          npm build
+          aws s3 sync /build s3://resume.taylorboren.me
 
 workflows:
   version: 2
