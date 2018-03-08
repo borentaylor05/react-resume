@@ -1,0 +1,17 @@
+.circle-image {
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 220px;
+    height: 220px;
+
+    &__img {
+        border-radius: 50%;
+        width: 98%;
+        height: 98%;
+        padding: 10px;
+    }
+}

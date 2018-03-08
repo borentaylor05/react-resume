@@ -1,0 +1,1 @@
+export const mediaBaseUrl = 'https://s3.amazonaws.com/media.taylorboren.me';
