@@ -9,7 +9,7 @@ jobs:
       # specify the version you desire here
       - image: node:carbon
 
-    working_directory: /
+    working_directory: ~/
 
     steps:
       - checkout
