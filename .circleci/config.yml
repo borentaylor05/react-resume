@@ -35,3 +35,6 @@ jobs:
         
       # run tests!
       - run: npm test
+      # build project
+      - run: npm build
+      - run: aws s3 cp --recursive /build/* s3://resume.taylorboren.me
