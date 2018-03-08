@@ -12,7 +12,6 @@ jobs:
     working_directory: ~/
 
     steps:
-      - checkout
       - run:
           name: Install AWS CLI
           command: |
