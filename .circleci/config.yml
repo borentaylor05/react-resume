@@ -16,9 +16,7 @@ jobs:
           name: Install AWS CLI
           command: |
             apt-get -y -qq update
-            apt-get -y -qq install python3.4-dev
-            curl -O https://bootstrap.pypa.io/get-pip.py
-            python3.4 get-pip.py --user
+            apt-get -y -qq install python-pip python-dev
             pip install awscli --upgrade --user
 
       # Download and cache dependencies
