@@ -7,17 +7,14 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: node:carbon
+      - image: circleci/node:8.9.0
 
     working_directory: ~/
 
     steps:
       - run:
           name: Install AWS CLI
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python-pip python-dev
-            pip install awscli --upgrade --user
+          command: sudo apt-get -y -qq install awscli
 
       # Download and cache dependencies
       - restore_cache:
