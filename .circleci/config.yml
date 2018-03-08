@@ -32,7 +32,9 @@ jobs:
       - run: npm test
 
       - run:
-          name: Deploy
-          command: |
-            npm build
-            aws s3 sync /build s3://resume.taylorboren.me
+          name: Build Project
+          command: npm run build
+
+      - run:
+          name: Copy Files
+          command: aws s3 sync /build s3://resume.taylorboren.me
