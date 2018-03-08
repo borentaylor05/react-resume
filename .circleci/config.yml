@@ -14,13 +14,13 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install AWS CLI
-        command: |
-          apt-get -y -qq update
-          apt-get -y -qq install python3.4-dev
-          curl -O https://bootstrap.pypa.io/get-pip.py
-          python3.4 get-pip.py --user
-          pip install awscli --upgrade --user
+          name: Install AWS CLI
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python3.4-dev
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python3.4 get-pip.py --user
+            pip install awscli --upgrade --user
 
       # Download and cache dependencies
       - restore_cache:
@@ -40,7 +40,7 @@ jobs:
       - run: npm test
 
       - run:
-        name: Deploy
-        command: |
-          npm build
-          aws s3 sync /build s3://resume.taylorboren.me
+          name: Deploy
+          command: |
+            npm build
+            aws s3 sync /build s3://resume.taylorboren.me
