@@ -37,4 +37,4 @@ jobs:
 
       - run:
           name: Copy Files
-          command: aws s3 sync ~/project/build s3://resume.taylorboren.me
+          command: aws s3 sync ~/project/build s3://about.taylorboren.me
